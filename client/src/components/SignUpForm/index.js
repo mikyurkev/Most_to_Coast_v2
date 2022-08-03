@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { ADD_USER } from "../utils/mutations";
+import { ADD_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 export default function SignUpForm() {
     const [addUser, { error }] = useMutation(ADD_USER);
