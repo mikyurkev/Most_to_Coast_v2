@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { LOGIN_USER } from "../utils/mutations";
+import { LOGIN_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 
 export default function LoginForm() {
     const [loginUser, { error }] = useMutation(LOGIN_USER);
