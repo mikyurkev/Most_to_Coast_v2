@@ -22,7 +22,7 @@ export default function ViewPlanner() {
     //     ] 
     // );
     const [planState, setPlanState] = useState({});
-    const time = ['9am', '12pm', '3pm', '6pm'];
+    const times = ['9am', '12pm', '3pm', '6pm'];
 
     // useEffect(()=>{
 
@@ -31,8 +31,9 @@ export default function ViewPlanner() {
     // }, [planState])
 
     const { loading, data } = useQuery(QUERY_PLAN_BY_USER, {
-        variables: { username: Auth.getProfile().data.username }
+        // variables: { username: Auth.getProfile().data.username }
         //  variables: { username: 'Taylor.Jaskolski' }
+        variables: { username: 'Steve.Ruecker52' }
     });
 
     if (!Auth.loggedIn()) {
@@ -93,28 +94,18 @@ export default function ViewPlanner() {
     console.log(planState.days && planState.days[0]);
 
     return (
-        <div className="viewplan" >
-            <div className="row">
-                <div className="col-12 col-md-8">
+        <section className="viewplan row px-5" >
+            <article className="col-12 col-md-2 col-xl-3">
+                <div className="">
 
                     <div className='parent'>
-                        <div className="plan-title">My Plans</div>
+                        <h2 className="plan-title">My Plans</h2>
 
                         <button className="plan-nickname" onClick={function(){
                             navigate("/Planner")
                         }} >Edit Plan</button>
                     </div>
 
-                </div>
-                
-                <div className="col-6 col-md-4">
-                    <div className="plan-details">Plan Details</div>
-                </div>
-            </div>
-        
-
-            <div className="row">
-                <div className="col-6 col-md-2">
                     <div className="vstack gap-3">
                         <br></br>
                         {plans.length && plans.map(plan => {
@@ -130,66 +121,66 @@ export default function ViewPlanner() {
                         })}
                     </div>
                 </div>
+                
+            </article>
+        
 
-                <div className="col-6 col-md-3">
-                    <br></br>
-                    <textarea 
-                        id="story" 
-                        name="story" 
-                        rows="11" 
-                        cols="60"
-                        value={planState.description ? (planState.description) : 'Description...'}
-                    >
-                    </textarea>
-                </div>
-                <br></br>
-                <div className="col-6 d-flex justify-content-between">
-                    {planState.days && planState.days.map(day => {
-                        return (
-                            <div key={day.id}>
-                                <p>{day.dayNumber}</p>
-                                {day.activities && day.activities.map(activity => {
-                                    return <p>{activity.time}: {activity.name}</p>;
-                                })}
-                                {/* <table className="table">
-                                    <thead>
-                                        <tr>
-                                            {day.dayNumber === 'Day 1' && 
-                                                <th scope="col">Time</th>
-                                            }
-                                            <th scope="col">{day.dayNumber}</th>
-                                            {/* <th scope='row'>9:00am</th>
-                                            <th scope='row'>10:00am</th>
-                                            <th scope='row'>11:00am</th>
-                                            <th scope='row'>12:00am</th> */}
-                                        {/* </tr>
-                                    </thead>
-                                    <tbody>
-                                        {time.map(element => {
-                                            return (
-                                                <tr key={element}>                    
-                                                    {day.dayNumber === 'Day 1' && 
-                                                        <th scope="row">{element}</th>
-                                                    }
-                                                    {day.activities && day.activities.map(activity => {
-                                                        if (activity.time === element) {
-                                                            return <td>{activity.name}</td>;
-                                                        }
-                                                    })}
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </table> */}
+            <article className="col-6 col-md-10 col-xl-9">
+
+                <div className="row">
+                    <div className='col-12 d-flex justify-content-center'>
+                        <h2 className="plan-details">Plan Details</h2>
+                    </div>
+                
+                    <div className='col-12 mx-5 px-3 pt-4'>
+
+                        <div className="col-6 col-md-3 col-xl-3 row">
+                            <h3 className='details-subtitle col-12'>Description</h3>
+                            <div className='description border border-secondary col-11'>
+                                <p>
+                                    {planState.description ? 
+                                        planState.description 
+                                        : 
+                                        'Please select a title to see details.'
+                                    }
+                                </p>
                             </div>
-                        )
-                    })}
+                        </div>
+                        <div className="col-8 col-md-9 col-xl-8 row">
+                            <h3 className='details-subtitle col-12'>Time Schedule</h3>
+                            <div className="col-12 d-flex">
+
+                                {planState.days && planState.days.map(day => {
+                                    return (
+                                        <div key={day.id} className="mx-4 w-50">
+                                            <h4>{day.dayNumber}</h4>
+                                            {times.map(time => {
+                                                return (
+                                                    <div key={time} className='row'>
+                                                        <p className='col-3'>{time}</p>
+                                                        {day.activities && day.activities.map(activity => {
+                                                            if (activity.time === time) {
+                                                                return (
+                                                                    <p key={activity.id} className='col-7'>{activity.name}</p>
+                                                                );
+                                                            }
+                                                        })}
+                                                    </div> 
+                                                );
+                                            })}
+
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </article>
 
             <br></br>
 
-            <div className="row">
+            {/* <div className="row">
                 <div className="col-12">
                     <div className='grandparent'>
 
@@ -205,10 +196,9 @@ export default function ViewPlanner() {
 
                     </div>
                 </div>
-            </div>
-    </div>
-
-    )
+            </div> */}
+        </section>
+    );
 }
 
 // when user comes to page, they see list of plans, when they click the it populates - this will fetch plan
