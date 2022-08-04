@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import "./Planner.css";
 import { CREATE_PLAN } from "../../utils/mutations";
+
 export default function Planner() {
   const [destination, setDestination] = useState("");
   const [planTitle, setPlanTitle] = useState("");

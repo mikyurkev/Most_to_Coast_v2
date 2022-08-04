@@ -4,7 +4,6 @@ import {useNavigate} from "react-router-dom"
 import { QUERY_PLAN_BY_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../../utils/auth';
-
 export default function ViewPlanner() {
     const navigate = useNavigate();
     // const [timeState, setTimePost] = useState(
