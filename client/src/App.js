@@ -9,11 +9,11 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
-import LoginSignUp from './pages/LoginSignUp/LoginSignUp';
-import Main from './pages/Main/Main';
-import Account from './pages/Account/Account';
-import Planner from './pages/Planner/Planner';
-import View from './pages/ViewPlanner/ViewPlanner';
+import LoginSignUp from './pages/LoginSignUp';
+import Main from './pages/Main';
+import Account from './pages/Account';
+import Planner from './pages/Planner';
+import View from './pages/ViewPlanner';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
