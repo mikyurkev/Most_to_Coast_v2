@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import "./Planner.css";
 import { CREATE_PLAN } from "../../utils/mutations";
+import PlanTemplate from "../../components/PlanTemplate"
+
 export default function Planner() {
   const [destination, setDestination] = useState("");
   const [planTitle, setPlanTitle] = useState("");
@@ -15,7 +17,7 @@ export default function Planner() {
   const handleDescriptionChange = (event) => {
     setDescriptionText(event.target.value);
   };
-  const [addPlan, { error }] = useMutation(CREATE_PLAN);
+  const [addPlan, { data, error }] = useMutation(CREATE_PLAN);
   const handleFormSubmit = async (event) => {
     console.log(`planTitle${planTitle}`, `destination${destination}`, `description ${descriptionText}`);
     event.preventDefault();
@@ -87,6 +89,8 @@ export default function Planner() {
           </button>
         </div>
       </form>
+
+      <PlanTemplate planId={data} />
     </div>
   );
 }

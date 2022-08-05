@@ -13,7 +13,7 @@ import LoginSignUp from './pages/LoginSignUp';
 import Main from './pages/Main';
 import Account from './pages/Account';
 import Planner from './pages/Planner';
-import View from './pages/ViewPlanner';
+import View from './pages/YourPlanner';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
