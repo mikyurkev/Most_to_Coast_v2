@@ -55,14 +55,14 @@ export default function ViewPlanner() {
     return (
         <section className="row px-5" >
             <article className="col-12 col-md-2 col-xl-3">
-                <h2>My Plans</h2>
-                <div className="vstack gap-3 mt-4">
+                <h1>My Plans</h1>
+                <div className="vstack gap-3 mt-5">
                     {plans.length && plans.map(plan => {
                         return (
                             <button 
-                                key={plan._id} 
+                                key={plan.id} 
                                 onClick={() => {viewPlan(plan)}} 
-                                className="user-plans"
+                                className="user-plans data"
                             >
                                 {plan.planTitle}
                             </button>
@@ -71,10 +71,10 @@ export default function ViewPlanner() {
                 </div>
             </article>
 
-            <article className="col-6 col-md-10 col-xl-9">
-                <div className="row px-3">
+            <article className="col-6 col-md-10 col-xl-9 mb-5">
+                <div className="px-3">
                     <div className='col-12 d-flex justify-content-center'>
-                        <h2 className="plan-details">Plan Details</h2>
+                        <h1 className="plan-details">Plan Details</h1>
                         {planState.id && (
                             <div className='my-4'>
                                 <button 
@@ -88,46 +88,61 @@ export default function ViewPlanner() {
                     </div>
                     
                     {planState.id ? (
-                        <div className='col-12 mx-4'>
-                            <div className="col-6 col-md-3 col-xl-3 row">
-                                <h3>Plan Title</h3>
-                                <p>{planState.title}</p>
+                        <div>
+                            <div className="col-6 col-md-3 col-xl-3">
+                                <h2>Plan Title</h2>
+                                <p className='data'>{planState.title}</p>
 
-                                <h3 className='mt-3'>Destination</h3>
-                                <p>{planState.destination}</p>
+                                <h2 className='mt-5'>Destination</h2>
+                                <p className='data'>{planState.destination}</p>
 
-                                <h3 className='mt-3'>Description</h3>
-                                <p className='description border border-secondary p-3 col-11'>
+                                <h2 className='mt-5'>Description</h2>
+                                <p className='data description border border-secondary p-3 col-11'>
                                     {planState.description}
                                 </p>
                             </div>
 
-                            <div className="col-8 col-md-9 col-xl-8 row">
-                                <h3 className='details-subtitle col-12'>Time Schedule</h3>
-                                <div className="col-12 d-flex">
-
-                                    {planState.days && planState.days.map(day => {
-                                        return (
-                                            <div key={day.id} className="mx-4 w-50">
-                                                <h4>{day.dayNumber}</h4>
-                                                {times.map(time => {
-                                                    return (
-                                                        <div key={time} className='row'>
-                                                            <p className='col-3'>{time}</p>
-                                                            {day.activities && day.activities.map(activity => {
-                                                                if (activity.time === time) {
-                                                                    return (
-                                                                        <p key={activity.id} className='col-7'>{activity.name}</p>
-                                                                    );
-                                                                }
-                                                            })}
-                                                        </div> 
-                                                    );
-                                                })}
-
-                                            </div>
-                                        )
-                                    })}
+                            <div className="col-8 col-md-9 col-xl-8">
+                                {/* <h2 className='details-subtitle col-12'>Time Schedule</h2> */}
+                                <div className='d-flex'>
+                                    <div>
+                                        <div className='day-title pb-2'>
+                                            <h3>Time</h3>
+                                        </div>
+                                        {times.map(time => {
+                                            return (
+                                                <div key={time} className='time-slot'>
+                                                    <p>{time}</p>
+                                                </div> 
+                                            );
+                                        })}
+                                    </div>
+                                    <div className="d-flex flex-wrap">
+                                        {planState.days.map(day => {
+                                            return (
+                                                <div key={day.id} className="mx-4 day-plan">
+                                                    <div className='day-title pb-2'>
+                                                        <h3>{day.dayNumber}</h3>
+                                                    </div>
+                                                    {times.map(time => {
+                                                        return (
+                                                            <div key={time} className='d-flex time-slot'>
+                                                                {day.activities && day.activities.map(activity => {
+                                                                    if (activity.time === time) {
+                                                                        return (
+                                                                            <p key={activity.id} className='data'>
+                                                                                {activity.name}
+                                                                            </p>
+                                                                        );
+                                                                    }
+                                                                })}
+                                                            </div> 
+                                                        );
+                                                    })}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
                             </div>
                         </div>
