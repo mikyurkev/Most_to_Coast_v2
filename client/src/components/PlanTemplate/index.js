@@ -48,36 +48,54 @@ export default function PlanTemplate(props) {
 
     //Add Activity Portion
     //text from 9am
-    const [dayInfo1, setdayInfo1] = useState();
-    const handleChange1 = (event) => {
-        setdayInfo1(event.target.value);
-    };
-    //text from 1pm
-    const [dayInfo2, setdayInfo2] = useState();
-    const handleChange2 = (event) => {
-        setdayInfo2(event.target.value);
-    };
-    //text from 3pm
-    const [dayInfo3, setdayInfo3] = useState();
-    const handleChange3 = (event) => {
-        setdayInfo3(event.target.value);
-    };
-    //text from 5pm
-    const [dayInfo4, setdayInfo4] = useState();
-    const handleChange4 = (event) => {
-        setdayInfo4(event.target.value);
-    };
 
-    const handleFormSubmit = async(event) => {
-        try {
-            await addActivity({
-              variables: { input: { } }
-            });
+    // const [dayInfo1, setdayInfo1] = useState();
+    // const handleChange1 = (event) => {
+    //     setdayInfo1(event.target.value);
+    // };
+    // //text from 1pm
+    // const [dayInfo2, setdayInfo2] = useState();
+    // const handleChange2 = (event) => {
+    //     setdayInfo2(event.target.value);
+    // };
+    // //text from 3pm
+    // const [dayInfo3, setdayInfo3] = useState();
+    // const handleChange3 = (event) => {
+    //     setdayInfo3(event.target.value);
+    // };
+    // //text from 5pm
+    // const [dayInfo4, setdayInfo4] = useState();
+    // const handleChange4 = (event) => {
+    //     setdayInfo4(event.target.value);
+    // };
 
-          } catch (e) {
-            console.error(e);
+    const [dayInfo, setdayInfo] = useState({
+        1: {
+            9: '',
+            12: '',
+            3: '',
+            6: '',
         }
+    });
+    
+    const handleChange = (event, fieldToUpdate) => {
+        setdayInfo(prevState => {
+            prevState[fieldToUpdate] = event.target.value;
+            return prevState;
+            // ...prevState,
+            // [fieldToUpdate]: event.target.value
+        });
     };
+
+    //     try {
+    //         await addActivity({
+    //           variables: { input: { } }
+    //         });
+
+    //       } catch (e) {
+    //         console.error(e);
+    //     }
+    // };
 
 
 
@@ -92,16 +110,16 @@ export default function PlanTemplate(props) {
                         <h2>Day {days.dayNumber + 1} </h2>
                         <form>
                             <label>9am: </label>
-                            <input type="text" onChange={handleChange1} value={dayInfo1}></input>
+                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][9]}></input>
                             <br></br>
                             <label>12am: </label>
-                            <input type="text" onChange={handleChange2} value={dayInfo2}></input>
+                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][12]}></input>
                             <br></br>
                             <label>3pm: </label>
-                            <input type="text" onChange={handleChange3} value={dayInfo3}></input>
+                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][3]}></input>
                             <br></br>
                             <label>6pm: </label>
-                            <input type="text" onChange={handleChange4} value={dayInfo4}></input>
+                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][9]}></input>
                         </form>
                     </div>
                 )
