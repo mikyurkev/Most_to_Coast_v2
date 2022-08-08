@@ -55,17 +55,20 @@ export default function PlanTemplate(props) {
 
     //Add Activity Portion
 
-    const handleChange = (event, fieldToUpdate) => {
+    const handleChange = (event, dayToUpdate, fieldToUpdate) => {
         event.preventDefault();
         setdayInfo(prevState => {
-            
-            prevState[fieldToUpdate]= event.target.value;
+            console.log(event);
             console.log(prevState);
-            return prevState;
+            console.log(dayToUpdate);
+            console.log(fieldToUpdate);
+                prevState[dayToUpdate][fieldToUpdate]=event.target.value;
+                console.log(prevState);
+                return prevState;
             // ...prevState,
             // [fieldToUpdate]: event.target.value
         });
-
+        console.log(dayInfo);
     };
 
     //     try {
@@ -91,16 +94,16 @@ export default function PlanTemplate(props) {
                         <h2>Day {days.dayNumber + 1} </h2>
                         <form>
                             <label>9am: </label>
-                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][9]}></input>
+                            <input type="text" autoComplete="off" onChange={event => handleChange(event,days.dayNumber,9)} value={dayInfo[days.dayNumber][9]}></input>
                             <br></br>
                             <label>12am: </label>
-                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][12]}></input>
+                            <input type="text" autoComplete="off" onChange={event =>handleChange(event,days.dayNumber,12)} value={dayInfo[days.dayNumber][12]}></input>
                             <br></br>
                             <label>3pm: </label>
-                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][3]}></input>
+                            <input type="text" autoComplete="off" onChange={event =>handleChange(event,days.dayNumber,3)} value={dayInfo[days.dayNumber][3]}></input>
                             <br></br>
                             <label>6pm: </label>
-                            <input type="text" onChange={handleChange} value={dayInfo[days.dayNumber][6]}></input>
+                            <input type="text" autoComplete="off" onChange={event =>handleChange(event,days.dayNumber,6)} value={dayInfo[days.dayNumber][6]}></input>
                         </form>
                     </div>
                 )
