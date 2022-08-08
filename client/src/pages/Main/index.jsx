@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, useLazyQuery } from '@apollo/client';
-import "./Main.css";
+import "./index.css";
 import { QUERY_ALL_PLANS, QUERY_PLAN_BY_USER } from "../../utils/queries";
 
 export default function Main() {
     const { loading, error, data: allUserData } = useQuery(QUERY_ALL_PLANS);
     const [getPlans, { data: userData }] = useLazyQuery(QUERY_PLAN_BY_USER);
-    const { queryPlanData, setQueryPlanData } = useState([]);
+    // const { queryPlanData, setQueryPlanData } = useState([]);
     const [findUser, setFindUser] = useState();
-    const [searched, setSearch] = useState(false);
-    const [userPost, setUserPost] = useState({
-        posts: [allUserData],
-        filteredPosts: []
-    })
+    const [searchedState, setSearchedState] = useState(false);
+    // const [userPost, setUserPost] = useState({
+    //     posts: [allUserData],
+    //     filteredPosts: []
+    // })
     console.log(userData);
     const allTravelPlansData = allUserData?.allTravelPlans || [];
 
     useEffect(() => {
         if (allUserData) {
-            console.log(allUserData.allTravelPlans);
+            // console.log(allUserData.allTravelPlans);
         }
         // here grab all of the data from the backend and set it to state
         // setUserPost({posts: data from backend})
@@ -32,15 +32,29 @@ export default function Main() {
     //     userData(findUser);
     // }
 
-    const handleChange = (event) => {
-        setFindUser(event.target.value);
-    };
+    let searchPlanResult;
 
-    const displayPosts = userPost.filteredPosts || [];
+    if (userData && !userData.searchPlansByUser) {
+        searchPlanResult = <div>The user does not exist. Try again!</div>;
+    } else if (userData && userData.searchPlansByUser.myPlans.length === 0) {
+        searchPlanResult = <div>No data yet</div>
+    } else if (userData) {
+        searchPlanResult = userData.searchPlansByUser.myPlans.map((plans) => {
+            return (
+                <div key={plans._id} className="text-left">
+                    <h2>{plans.planTitle}</h2>
+                    <p>{plans.descriptionText}</p>
+                    <p>{plans.destination}</p>
+                </div>
+            );
+        })
+    }
+
+    // const displayPosts = userPost.filteredPosts || [];
 
     if (error) return `Error! ${error}`;
 
-    console.log(allTravelPlansData);
+    console.log(userData);
 
     return (
         <div className='main'>
@@ -54,39 +68,41 @@ export default function Main() {
                         Explore Plans
                     </label>
                     <br></br>
-                    <input onChange={handleChange} value={findUser} type='text' required autoComplete="off" className='search-field' />
+                    <input 
+                        type='text' required
+                        className='search-field'
+                        onChange={(event) => {
+                            setFindUser(event.target.value)
+                        }} 
+                        defaultValue={findUser} />
                     <br></br>
-                    <button type='button' className='search-button' onClick={() => {
-                        getPlans({ variables: { username: findUser } })
-                        setSearch(true);
-                    }}>search</button>
+                    <button 
+                        type='button' 
+                        className='search-button' 
+                        onClick={() => {
+                            setSearchedState(true)
+                            getPlans({ variables: { username: findUser } })
+                        }}
+                    >search</button>
                 </div>
             </form>
+            {userData && !userData.searchPlansByUser}
             <div className="container-fluid">
-                {!searched?                 <div className='text-center'>
-                    {allTravelPlansData ? allTravelPlansData.map((allUserData) => {
-                        return (
-                            <div className="text-left">
-                                <h2>{allUserData.planTitle}</h2>
-                                <p>{allUserData.descriptionText}</p>
-                                <p>{allUserData.destination}</p>
-                            </div>
-                        )
-                    }) : ('No Data yet')
-                    }
-                </div> :  
-                <div className='text-center'>
-                    {userData ? userData.searchPlansByUser.myPlans.map((plans) => {
-                        return (
-                            <div className="text-left">
-                                <h2>{plans.planTitle}</h2>
-                                <p>{plans.descriptionText}</p>
-                                <p>{plans.destination}</p>
-                            </div>
-                        )
-                    }) : ('No Data yet')
-                    }
-                </div> 
+                {!searchedState ? 
+                    <div className='text-center'>
+                        {allTravelPlansData ? allTravelPlansData.map((allUserData) => {
+                            return (
+                                <div key={allUserData._id} className="text-left">
+                                    <h2>{allUserData.planTitle}</h2>
+                                    <p>{allUserData.descriptionText}</p>
+                                    <p>{allUserData.destination}</p>
+                                </div>
+                            )
+                        }) : ('No Data yet')}
+                    </div> :  
+                    <div className='text-center'>
+                        {searchPlanResult}
+                    </div> 
                 }   
             </div>
         </div>
