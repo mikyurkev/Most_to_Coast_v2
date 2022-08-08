@@ -8,9 +8,13 @@ import "./index.css";
 
 export default function ViewYourPlanner() {
     const navigate = useNavigate();
+
+
     const [planState, setPlanState] = useState({});
     const [editState, setEditState] = useState('');
     const times = ['9am', '12pm', '3pm', '6pm'];
+
+
 
     const { loading, data } = useQuery(QUERY_PLAN_BY_USER, {
         // variables: { username: Auth.getProfile().data.username }
@@ -26,6 +30,8 @@ export default function ViewYourPlanner() {
     }
 
     const plans = data?.searchPlansByUser.myPlans;
+
+
 
     function viewPlan(plan){
         const daysData = plan.days.map(day => {
@@ -53,9 +59,7 @@ export default function ViewYourPlanner() {
         });
     }
 
-    function editPlan(plan) {
-        setEditState(plan);
-    }
+
 
     if (editState) {
         return (
@@ -160,27 +164,5 @@ export default function ViewYourPlanner() {
                             <p className='mt-4'>Please select a title to see details.</p>
                         )}
                     </div>
-                </article>
-    
-                {/* <div className="row">
-                    <div className="col-12">
-                        <div className='grandparent'>
-    
-                            <div className='plan-title'>Plan Created by:  user123</div>
-    
-                            <div className='plan-likes'>
-                                <div className="vote roundrect">
-                                    <div className="increment up"></div>
-                                    <div className="increment down"></div>
-                                    <button className="likes">This Travel Plan has been liked by  : 105 Travel Addicts</button>
-                                </div>
-                            </div>
-    
-                        </div>
-                    </div>
-                </div> */}
-            </section>
-        );
-    }
 
 }
