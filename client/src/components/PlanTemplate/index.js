@@ -14,8 +14,8 @@ export default function PlanTemplate(props) {
         0: {        
         9: '',
         12: '',
-        3: '',
-        6: '',
+        15: '',
+        18: '',
         } 
     });
 
@@ -25,8 +25,8 @@ export default function PlanTemplate(props) {
         dayInfo[day] = {
             9: '',
             12: '',
-            3: '',
-            6: ''
+            15: '',
+            18: ''
         }
 
         setDay(day + 1);
@@ -75,7 +75,7 @@ export default function PlanTemplate(props) {
  
         try {
             await addActivity({
-              variables: {input: {name: dayInfo[dayToSubmit][fieldToSubmit], startTime: fieldToSubmit+'am'}, dayId: planData.singlePlan.days[dayToSubmit]._id, planId:props.planId.createPlan._id}
+              variables: {input: {name: dayInfo[dayToSubmit][fieldToSubmit], startTime: fieldToSubmit}, dayId: planData.singlePlan.days[dayToSubmit]._id, planId:props.planId.createPlan._id}
             });
 
           } catch (e) {
@@ -94,21 +94,21 @@ export default function PlanTemplate(props) {
                     <div className="text-left">
                         <h2>Day {days.dayNumber + 1} </h2>
                         <form>
-                            <label>9am: </label>
+                            <label>9:00 </label>
                             <input type="text" autoComplete="off" onBlur={event => handleChange(event,days.dayNumber,9)} defaultValue={dayInfo[days.dayNumber][9]}></input>
                             <button type="button" onClick={()=>handleClick(days.dayNumber,9)}>OK</button>
                             <br></br>
-                            <label>12am: </label>
+                            <label>12:00: </label>
                             <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,12)} defaultValue={dayInfo[days.dayNumber][12]}></input>
                             <button type="button" onClick={()=>handleClick(days.dayNumber,12)}>OK</button>
                             <br></br>
-                            <label>3pm: </label>
-                            <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,3)} defaultValue={dayInfo[days.dayNumber][3]}></input>
-                            <button type="button" onClick={()=>handleClick(days.dayNumber,3)}>OK</button>
+                            <label>15:00 </label>
+                            <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,15)} defaultValue={dayInfo[days.dayNumber][15]}></input>
+                            <button type="button" onClick={()=>handleClick(days.dayNumber,15)}>OK</button>
                             <br></br>
-                            <label>6pm: </label>
-                            <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,6)} defaultValue={dayInfo[days.dayNumber][6]}></input>
-                            <button type="button" onClick={()=>handleClick(days.dayNumber,6)}>OK</button>
+                            <label>18:00 </label>
+                            <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,18)} defaultValue={dayInfo[days.dayNumber][18]}></input>
+                            <button type="button" onClick={()=>handleClick(days.dayNumber,18)}>OK</button>
                         </form>
                     </div>
                 )

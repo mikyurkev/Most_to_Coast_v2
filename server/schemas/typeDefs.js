@@ -47,8 +47,8 @@ const typeDefs = gql`
         _id: ID
         name: String!
         place: String
-        startTime: String!
-        endTime: String
+        startTime: Int!
+        endTime: Int
         description: String
         picture: String
     }
@@ -57,8 +57,8 @@ const typeDefs = gql`
         _id: ID
         name: String!
         place: String
-        startTime: String!
-        endTime: String
+        startTime: Int!
+        endTime: Int
         description: String
         picture: String
     }

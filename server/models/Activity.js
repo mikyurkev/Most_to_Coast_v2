@@ -11,11 +11,11 @@ const activitySchema = new Schema (
             type: String,
         },
         startTime: {
-            type: String,
+            type: Number,
             required: true
         },
         endTime: {
-            type: String,
+            type: Number,
         },
         description: {
             type: String
