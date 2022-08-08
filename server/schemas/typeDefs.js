@@ -46,9 +46,9 @@ const typeDefs = gql`
     type Activity {
         _id: ID
         name: String!
-        place: String!
+        place: String
         startTime: String!
-        endTime: String!
+        endTime: String
         description: String
         picture: String
     }
@@ -56,9 +56,9 @@ const typeDefs = gql`
     input ActivityInput {
         _id: ID
         name: String!
-        place: String!
+        place: String
         startTime: String!
-        endTime: String!
+        endTime: String
         description: String
         picture: String
     }

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
-import {CREATE_DAY} from "../../utils/mutations";
+import {CREATE_DAY, CREATE_ACTIVITY} from "../../utils/mutations";
 import {QUERY_PLAN_BY_ID} from "../../utils/queries";
-import {CREATE_ACTIVITY} from "../../utils/mutations";
+
 
 export default function PlanTemplate(props) {
     const [addDay] = useMutation(CREATE_DAY);
-    const [addActivity] = useMutation(CREATE_DAY);
+    const [addActivity] = useMutation(CREATE_ACTIVITY);
     const [getPlan, { data: planData }] = useLazyQuery(QUERY_PLAN_BY_ID);
     const [day, setDay] = useState(0);
 
@@ -35,7 +35,7 @@ export default function PlanTemplate(props) {
 
         try {
             await addDay({
-              variables: { planId: props.planId.createPlan._id, input: {dayNumber: day} }
+              variables: { planId: props.planId.createPlan._id, input: {dayNumber: day}}
             });
 
 
@@ -50,7 +50,7 @@ export default function PlanTemplate(props) {
     const handleFetch = async(event) => {
         event.preventDefault();
         getPlan({ variables: { id: props.planId.createPlan._id } })
-        console.log(planData);
+        
     }
 
     //Add Activity Portion
@@ -58,12 +58,12 @@ export default function PlanTemplate(props) {
     const handleChange = (event, dayToUpdate, fieldToUpdate) => {
         event.preventDefault();
         setdayInfo(prevState => {
-            console.log(event);
             console.log(prevState);
             console.log(dayToUpdate);
             console.log(fieldToUpdate);
+            console.log(event.target.value);
                 prevState[dayToUpdate][fieldToUpdate]=event.target.value;
-                console.log(prevState);
+                
                 return prevState;
             // ...prevState,
             // [fieldToUpdate]: event.target.value
@@ -71,18 +71,19 @@ export default function PlanTemplate(props) {
         console.log(dayInfo);
     };
 
-    //     try {
-    //         await addActivity({
-    //           variables: { input: { } }
-    //         });
+    const handleClick = async(dayToSubmit,fieldToSubmit) => {
+ 
+        try {
+            await addActivity({
+              variables: {input: {name: dayInfo[dayToSubmit][fieldToSubmit], startTime: fieldToSubmit+'am'}, dayId: planData.singlePlan.days[dayToSubmit]._id, planId:props.planId.createPlan._id}
+            });
 
-    //       } catch (e) {
-    //         console.error(e);
-    //     }
-    // };
-
-
-
+          } catch (e) {
+            console.error(e);
+        }
+    };
+   
+    
     return (
         <div className="container">
             <button onClick={handleAddDay}>Add Day</button>
@@ -94,23 +95,26 @@ export default function PlanTemplate(props) {
                         <h2>Day {days.dayNumber + 1} </h2>
                         <form>
                             <label>9am: </label>
-                            <input type="text" autoComplete="off" onChange={event => handleChange(event,days.dayNumber,9)} value={dayInfo[days.dayNumber][9]}></input>
+                            <input type="text" autoComplete="off" onBlur={event => handleChange(event,days.dayNumber,9)} defaultValue={dayInfo[days.dayNumber][9]}></input>
+                            <button type="button" onClick={()=>handleClick(days.dayNumber,9)}>OK</button>
                             <br></br>
                             <label>12am: </label>
-                            <input type="text" autoComplete="off" onChange={event =>handleChange(event,days.dayNumber,12)} value={dayInfo[days.dayNumber][12]}></input>
+                            <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,12)} defaultValue={dayInfo[days.dayNumber][12]}></input>
+                            <button type="button" onClick={()=>handleClick(days.dayNumber,12)}>OK</button>
                             <br></br>
                             <label>3pm: </label>
-                            <input type="text" autoComplete="off" onChange={event =>handleChange(event,days.dayNumber,3)} value={dayInfo[days.dayNumber][3]}></input>
+                            <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,3)} defaultValue={dayInfo[days.dayNumber][3]}></input>
+                            <button type="button" onClick={()=>handleClick(days.dayNumber,3)}>OK</button>
                             <br></br>
                             <label>6pm: </label>
-                            <input type="text" autoComplete="off" onChange={event =>handleChange(event,days.dayNumber,6)} value={dayInfo[days.dayNumber][6]}></input>
+                            <input type="text" autoComplete="off" onBlur={event =>handleChange(event,days.dayNumber,6)} defaultValue={dayInfo[days.dayNumber][6]}></input>
+                            <button type="button" onClick={()=>handleClick(days.dayNumber,6)}>OK</button>
                         </form>
                     </div>
                 )
             }) : ('No Data yet')
             }
             </div>
-            <button>Rock and Roll!</button>
             <h1>Number of days: {day}</h1>
             
         </div>

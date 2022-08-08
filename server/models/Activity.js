@@ -9,7 +9,6 @@ const activitySchema = new Schema (
         },
         place: {
             type: String,
-            required: true
         },
         startTime: {
             type: String,
@@ -17,7 +16,6 @@ const activitySchema = new Schema (
         },
         endTime: {
             type: String,
-            required: true
         },
         description: {
             type: String
