@@ -15,8 +15,9 @@ const Header = () => {
 
   return (
     <header>
-
+      <h1 className="justify-content-center">Most to Coast - Your next trip planning expert!</h1>
       <div className="navbar">
+      
         <ul>
           <li>
             <NavLink to="/main"><img src="img/Most2Coast.png" className="logo-header" alt="airplanelogo" /></NavLink>
