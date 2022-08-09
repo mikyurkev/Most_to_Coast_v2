@@ -106,30 +106,31 @@ db.once('open', async () => {
     //   amOrPm = 'pm';
     // }
 
-    const time = [9, 12, 3, 6];
-    const startHour = time[Math.floor(Math.random() * time.length)];
-    if (startHour === 9) {
-      amOrPm = 'am';
-    } else {
-      amOrPm = 'pm';
-    }
+    const time = [9, 12, 15, 18];
+    const startTime = time[Math.floor(Math.random() * time.length)];
+    const endTime = startTime + 1;
+    // if (startHour === 9) {
+    //   amOrPm = 'am';
+    // } else {
+    //   amOrPm = 'pm';
+    // }
 
     // add leading 0 to 1 digit number
     // const minute = String(Math.floor(Math.random() * 60)).padStart(2, '0');
     
-    const startTime = [
-      startHour, 
-      // ':', 
-      // minute,
-      amOrPm
-    ].join('');
+    // const startTime = [
+    //   startHour, 
+    //   // ':', 
+    //   // minute,
+    //   amOrPm
+    // ].join('');
     // add 1 hour to the startTime as endTime
-    const endTime = [
-      startHour + 1,
-      // ':', 
-      // minute,
-      amOrPm
-    ].join('');
+    // const endTime = [
+    //   startHour + 1,
+    //   // ':', 
+    //   // minute,
+    //   amOrPm
+    // ].join('');
     
     // randomly select day
     const randomDayIndex = Math.floor(Math.random() * createdDays.length);
