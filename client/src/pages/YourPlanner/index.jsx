@@ -10,11 +10,11 @@ export default function ViewYourPlanner() {
     const navigate = useNavigate();
     const [planState, setPlanState] = useState({});
     const [editState, setEditState] = useState('');
-    const times = ['9am', '12pm', '3pm', '6pm'];
+    const times = [9, 12, 15, 18];
 
     const { loading, data } = useQuery(QUERY_PLAN_BY_USER, {
         // variables: { username: Auth.getProfile().data.username }
-        variables: { username: 'Steve.Ruecker52' }
+        variables: { username: 'Elisha68' }
     });
 
     if (!Auth.loggedIn()) {
@@ -161,26 +161,7 @@ export default function ViewYourPlanner() {
                         )}
                     </div>
                 </article>
-    
-                {/* <div className="row">
-                    <div className="col-12">
-                        <div className='grandparent'>
-    
-                            <div className='plan-title'>Plan Created by:  user123</div>
-    
-                            <div className='plan-likes'>
-                                <div className="vote roundrect">
-                                    <div className="increment up"></div>
-                                    <div className="increment down"></div>
-                                    <button className="likes">This Travel Plan has been liked by  : 105 Travel Addicts</button>
-                                </div>
-                            </div>
-    
-                        </div>
-                    </div>
-                </div> */}
             </section>
         );
     }
-
 }
