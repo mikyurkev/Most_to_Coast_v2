@@ -10,7 +10,7 @@
     background: none;
     background-color: none;
     box-shadow: none;
-    border: 1.5px solid #3dc4f2;
+    /* border: 1.5px solid #3dc4f2; */
     border-radius: 50%;
     height: 50px;
     padding: 15px;
@@ -21,8 +21,8 @@
 .search-input-text {
     text-align: center;
     font-size: 2vw;
-    font-family: 'Edu NSW ACT Foundation', cursive;
-    color: #3dc4f2;
+    /* font-family: 'Edu NSW ACT Foundation', cursive; */
+    /* color: #3dc4f2; */
 }
 
 .search-button {
@@ -30,8 +30,8 @@
     margin-top: 8px;
     background: none;
     transition-duration: 0.5s;
-    color: #3dc4f2;
-    font-family: 'Edu NSW ACT Foundation', cursive;
+    /* color: #3dc4f2; */
+    /* font-family: 'Edu NSW ACT Foundation', cursive; */
     font-size: 1.5vw;
     border: none;
     border-radius: 50%;
@@ -42,8 +42,8 @@
     text-align: center;
     margin-top: 8px;
     background: none;
-    background-color: #3dc4f2;
-    color: #90d8f4;
+    /* background-color: #3dc4f2;
+    color: #90d8f4; */
 }
 
 .cloud1 {
@@ -73,8 +73,8 @@
     overflow: hidden;
     overflow-y: scroll;
     height: 500px;
-    font-family: 'Edu NSW ACT Foundation', cursive;
-    color: #3dc4f2;
+    /* font-family: 'Edu NSW ACT Foundation', cursive; */
+    /* color: #3dc4f2; */
 }
 
 .text-left{
@@ -90,11 +90,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3dc4f2;
+    /* background: #3dc4f2; */
     border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #87cee6;
+    /* background: #87cee6; */
 }
 

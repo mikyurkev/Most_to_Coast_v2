@@ -13,8 +13,8 @@ export default function ViewYourPlanner() {
     const times = [9, 12, 15, 18];
 
     const { loading, data } = useQuery(QUERY_PLAN_BY_USER, {
-        // variables: { username: Auth.getProfile().data.username }
-        variables: { username: 'Elisha68' }
+        variables: { username: Auth.getProfile().data.username }
+        // variables: { username: 'Elisha68' }
     });
 
     if (!Auth.loggedIn()) {

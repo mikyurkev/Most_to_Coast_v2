@@ -1,13 +1,13 @@
 .subtitle {
-    font-family: 'Edu NSW ACT Foundation', cursive;
-    color: #3DC4F2;
+    /* font-family: 'Edu NSW ACT Foundation', cursive; */
+    /* color: #3DC4F2; */
 }
 .title {
     text-align: center;
     margin: auto;
     width: 50%;
-    color: #3DC4F2;
-    font-family: 'Edu NSW ACT Foundation', cursive;
+    /* color: #3DC4F2; */
+    /* font-family: 'Edu NSW ACT Foundation', cursive; */
 }
 
 #submitBtn {
@@ -26,7 +26,7 @@
     text-decoration: none;
 }
 #submitBtn:hover {
-    background: #3CB0FD;
+    /* background: #3CB0FD; */
     text-decoration: none;
 }
 @media (max-width: 700px) {
@@ -43,7 +43,7 @@
     margin-top: 20px;
     font-size: 15px;
     font-weight: 600;
-    font-family: 'Edu NSW ACT Foundation', cursive;
+    /* font-family: 'Edu NSW ACT Foundation', cursive; */
     text-align: center;
 }
 @media (max-width: 700px) {
@@ -73,3 +73,4 @@
     bottom: 0;
     right: 0;
 }
+
