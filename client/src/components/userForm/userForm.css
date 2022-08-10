@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #3dc4f2;
+  --secondary-color: #F6F6F6;
+  --tertiary-color: #0078AA;
+}
+
 .userForm {
   background-color: #f1fbff;
   min-width: min-content;
