@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from '@apollo/client';
-
+import { useQuery,useMutation } from '@apollo/client';
+import { REMOVE_PLAN } from '../../utils/mutations';
 import { QUERY_PLAN_BY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import "./index.css";
@@ -10,10 +10,12 @@ export default function ViewYourPlanner() {
     const navigate = useNavigate();
     const [planState, setPlanState] = useState({});
     const [editState, setEditState] = useState('');
+    const [deletePlan] = useMutation(REMOVE_PLAN);
     const times = [9, 12, 15, 18];
 
     const { loading, data } = useQuery(QUERY_PLAN_BY_USER, {
         variables: { username: Auth.getProfile().data.username }
+        // variables: { username: 'Elisha68' }
     });
 
     if (!Auth.loggedIn()) {
@@ -56,6 +58,20 @@ export default function ViewYourPlanner() {
         setEditState(plan);
     }
 
+    const handleDeletePlan = async (event) => {
+        console.log(planState.id);
+
+        try {
+            await deletePlan({
+                variables: {id: planState.id}
+            });
+        } catch (err) {
+            console.error(err);
+        }
+
+        document.location.reload();
+    };
+
     if (editState) {
         return (
             // <PlanTemplate editState={editState} setEditState={setEditState} />
@@ -87,11 +103,17 @@ export default function ViewYourPlanner() {
                             <h1 className="plan-details">Plan Details</h1>
                             {planState.id && (
                                 <div className='my-4'>
-                                    <button 
+                                    {/* <button 
                                         className="edit-btn" 
                                         onClick={() => {editPlan(planState.id)}}
                                     >
                                         Edit Plan
+                                    </button> */}
+                                    <button
+                                        className="delete-btn"
+                                        onClick={() => {handleDeletePlan(planState.id)}}
+                                    >
+                                        Delete Plan
                                     </button>
                                 </div>
                             )}

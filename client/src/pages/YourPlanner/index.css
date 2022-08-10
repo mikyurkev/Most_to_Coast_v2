@@ -49,7 +49,22 @@ section {
     /* border-color: #0078AA; */
     background: var(--primary-color);
     color: var(--secondary-color);
-}    
+}
+
+.delete-btn {
+    border-color: var(--primary-color);
+    background: var(--secondary-color);
+    font-size: 1.1vw;
+    width: 7vw;
+    padding: 7px;
+    margin-left: 35px;
+}
+
+.delete-btn:hover {
+        /* border-color: #0078AA; */
+        background: var(--primary-color);
+        color: var(--secondary-color);
+}
 
 /* .plan-likes {
     display: inline-block;
