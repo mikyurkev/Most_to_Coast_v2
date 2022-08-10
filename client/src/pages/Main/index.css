@@ -98,3 +98,7 @@
     background: #87cee6;
 }
 
+.plan-title:hover {
+    color: #0078AA;
+    cursor: pointer;
+}
