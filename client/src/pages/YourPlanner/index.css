@@ -1,0 +1,111 @@
+:root {
+    --primary-color: #3dc4f2;
+    --secondary-color: #F6F6F6;
+}
+
+* {
+    font-size: 1.3vw;
+    color: var(--primary-color);
+    font-family: 'Edu NSW ACT Foundation', cursive;
+}
+
+section {
+    width: 100vw;
+}
+
+/* h2 {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2vw;
+    font-weight: 500;
+}     */
+
+.user-plans {
+    border: 2px solid var(--primary-color);
+}
+
+.user-plans:hover {
+    color: var(--secondary-color);
+    background: var(--primary-color);
+}
+
+/* .table {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    color: var(--primary-color);
+} */    
+.plan-details {
+    vertical-align: middle;
+}      
+
+.editPlan-btn, 
+.delete-btn {
+    border-color: var(--primary-color);
+    background: var(--secondary-color);
+    font-size: 1.1vw;
+    width: 7vw;
+    padding: 7px;
+    margin-left: 30px;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+        /* border-color: #0078AA; */
+        background: var(--primary-color);
+        color: var(--secondary-color);
+}
+
+/* .plan-likes {
+    display: inline-block;
+    padding: 10px;
+    padding-left: 20%;
+    position: center;
+    font-size: large;
+    font-weight: 500;
+    vertical-align: middle;
+} */    
+
+.description {
+    min-height: 25vh;
+}
+
+.day-plan {
+    width: 8vw;
+}
+
+.time-slot {
+    height: 8vw;
+    border-bottom: 1px solid;
+}
+
+.day-title {
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.data {
+    color: #0078AA;
+}
+
+/* .row1 {
+    padding-left: 40%;
+} */
+
+/* .planner {
+    width: 100%;
+    height: 100%;
+}
+
+.planner-inputs {
+    display: flex;
+}
+
+.planner-table {
+    width:70%;
+    border-style: solid;
+    border-color:var(--primary-color) ;
+
+} */
+
+/* .likes {
+    margin-left: 60px;   
+} */
+

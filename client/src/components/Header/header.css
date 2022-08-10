@@ -60,3 +60,7 @@ li a:hover {
 .logout-button:hover {
     opacity: 0.25;
 }
+
+.justify-content-center{
+    font-family: fantasy;
+}

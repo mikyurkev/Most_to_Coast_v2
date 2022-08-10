@@ -61,6 +61,19 @@ export const CREATE_PLAN = gql`
   }
 `;
 
+export const EDIT_PLAN = gql`
+  mutation editPlan($id: ID!, $input: PlanInput) {
+    editPlan(planId: $id, input: $input) {
+      _id
+      planTitle
+      destination
+      descriptionText
+      startDate
+      endDate
+    }
+  }
+`
+
 export const CREATE_DAY = gql`
   mutation createDay($planId: ID!, $input: DayInput) {
     createDay(planId: $planId, input: $input) {
@@ -88,6 +101,20 @@ export const EDIT_ACTIVITY = gql`
     }
   }
 `;
+
+export const CREATE_ACTIVITY = gql`
+  mutation createActivity($dayId: ID!, $input: ActivityInput, $planId: ID!) {
+    createActivity(dayId: $dayId, input: $input, planId: $planId) {
+      _id
+      name
+      place
+      startTime
+      endTime
+      description
+      picture
+    }
+  }
+`
 
 export const REMOVE_PLAN = gql`
   mutation removePlan($id: ID!) {

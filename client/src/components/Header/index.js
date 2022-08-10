@@ -15,8 +15,9 @@ const Header = () => {
 
   return (
     <header>
-
+      <h1 className="justify-content-center">Most to Coast - Your next trip planning expert!</h1>
       <div className="navbar">
+      
         <ul>
           <li>
             <NavLink to="/main"><img src="img/Most2Coast.png" className="logo-header" alt="airplanelogo" /></NavLink>
@@ -28,7 +29,7 @@ const Header = () => {
             <NavLink to="/planner">Make A Plan</NavLink>
           </li>
           <li>
-            <NavLink to="/viewplanner">View Your Plans</NavLink>
+            <NavLink to="/view-planner">View Your Plans</NavLink>
           </li>
           <li>
             <button type='click' className='logout-button' onClick={handleLogout}>Logout</button>

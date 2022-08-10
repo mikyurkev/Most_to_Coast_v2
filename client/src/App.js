@@ -9,11 +9,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
-import LoginSignUp from './pages/LoginSignUp/LoginSignUp';
-import Main from './pages/Main/Main';
-import Account from './pages/Account/Account';
-import Planner from './pages/Planner/Planner';
-import View from './pages/ViewPlanner/ViewPlanner';
+import LoginSignUp from './pages/LoginSignUp';
+import Main from './pages/Main';
+import Account from './pages/Account';
+import Planner from './pages/Planner';
+import View from './pages/YourPlanner';
+import SinglePlan from './pages/SinglePlan';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,14 +54,14 @@ function App() {
             path="/account"
             element={<Account />}
           />
-          <Route
-            path="/planner"
-            element={<Planner />}
-          />
-          <Route
-            path="/viewplanner"
-            element={<View />}
-          />
+          <Route path="/planner">
+            <Route path=':planId' element={<Planner />} />
+            <Route path='' element={<Planner />} />
+          </Route>
+          <Route path="/view-planner">
+            <Route path=':planId' element={<SinglePlan />} />
+            <Route path='' element={<View />} />
+          </Route>
         </Routes>
       </Router>
     </ApolloProvider>
