@@ -29,7 +29,7 @@ const Header = () => {
             <NavLink to="/planner">Make A Plan</NavLink>
           </li>
           <li>
-            <NavLink to="/viewplanner">View Your Plans</NavLink>
+            <NavLink to="/view-planner">View Your Plans</NavLink>
           </li>
           <li>
             <button type='click' className='logout-button' onClick={handleLogout}>Logout</button>
