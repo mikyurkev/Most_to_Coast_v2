@@ -16,6 +16,8 @@ export default function ViewYourPlanner() {
         variables: { username: Auth.getProfile().data.username }
     });
 
+    console.log(data);
+
     if (!Auth.loggedIn()) {
         navigate("/");
     }

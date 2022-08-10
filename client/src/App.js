@@ -54,10 +54,10 @@ function App() {
             path="/account"
             element={<Account />}
           />
-          <Route
-            path="/planner"
-            element={<Planner />}
-          />
+          <Route path="/planner">
+            <Route path=':planId' element={<Planner />} />
+            <Route path='' element={<Planner />} />
+          </Route>
           <Route path="/view-planner">
             <Route path=':planId' element={<SinglePlan />} />
             <Route path='' element={<View />} />

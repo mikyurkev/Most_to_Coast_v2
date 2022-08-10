@@ -61,6 +61,19 @@ export const CREATE_PLAN = gql`
   }
 `;
 
+export const EDIT_PLAN = gql`
+  mutation editPlan($id: ID!, $input: PlanInput) {
+    editPlan(planId: $id, input: $input) {
+      _id
+      planTitle
+      destination
+      descriptionText
+      startDate
+      endDate
+    }
+  }
+`
+
 export const CREATE_DAY = gql`
   mutation createDay($planId: ID!, $input: DayInput) {
     createDay(planId: $planId, input: $input) {
