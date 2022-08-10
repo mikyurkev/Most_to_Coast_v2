@@ -35,24 +35,21 @@ section {
 } */    
 .plan-details {
     vertical-align: middle;
-}      
+}    
 
-.editPlan-btn, 
-.delete-btn {
+.edit-btn {
     border-color: var(--primary-color);
     background: var(--secondary-color);
     font-size: 1.1vw;
     width: 7vw;
     padding: 7px;
-    margin-left: 30px;
-}
+}    
 
-.edit-btn:hover,
-.delete-btn:hover {
-        /* border-color: #0078AA; */
-        background: var(--primary-color);
-        color: var(--secondary-color);
-}
+.edit-btn:hover {
+    /* border-color: #0078AA; */
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}    
 
 /* .plan-likes {
     display: inline-block;

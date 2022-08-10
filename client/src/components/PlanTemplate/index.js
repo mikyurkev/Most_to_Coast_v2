@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
-import {CREATE_DAY, CREATE_ACTIVITY} from "../../utils/mutations";
-import {QUERY_PLAN_BY_ID} from "../../utils/queries";
+import { CREATE_DAY, CREATE_ACTIVITY } from "../../utils/mutations";
+import { QUERY_PLAN_BY_ID } from "../../utils/queries";
 
 
-export default function PlanTemplate(props) {
+export default function PlanTemplate({ planId, editMode }) {
     const [addDay] = useMutation(CREATE_DAY);
     const [addActivity] = useMutation(CREATE_ACTIVITY);
     const [getPlan, { data: planData }] = useLazyQuery(QUERY_PLAN_BY_ID);
     const [day, setDay] = useState(0);
 
-    const [dayInfo, setdayInfo] = useState({
+    const [dayInfo, setDayInfo] = useState({
         0: {        
-        9: '',
-        12: '',
-        15: '',
-        18: '',
+            9: '',
+            12: '',
+            15: '',
+            18: '',
         } 
     });
 
@@ -31,11 +31,11 @@ export default function PlanTemplate(props) {
 
         setDay(day + 1);
         
-        console.log(props.planId.createPlan._id);
+        console.log(planId);
 
         try {
             await addDay({
-              variables: { planId: props.planId.createPlan._id, input: {dayNumber: day}}
+              variables: { planId: planId, input: {dayNumber: day}}
             });
 
 
@@ -43,21 +43,20 @@ export default function PlanTemplate(props) {
             console.error(e);
         }
 
-        console.log(props.planId.createPlan._id);
+        console.log(planId);
 
     };
 
     const handleFetch = async(event) => {
         event.preventDefault();
-        getPlan({ variables: { id: props.planId.createPlan._id } })
-        
+        getPlan({ variables: { id: planId } })
     }
 
     //Add Activity Portion
 
     const handleChange = (event, dayToUpdate, fieldToUpdate) => {
         event.preventDefault();
-        setdayInfo(prevState => {
+        setDayInfo(prevState => {
             console.log(prevState);
             console.log(dayToUpdate);
             console.log(fieldToUpdate);
@@ -75,7 +74,7 @@ export default function PlanTemplate(props) {
  
         try {
             await addActivity({
-              variables: {input: {name: dayInfo[dayToSubmit][fieldToSubmit], startTime: fieldToSubmit}, dayId: planData.singlePlan.days[dayToSubmit]._id, planId:props.planId.createPlan._id}
+              variables: {input: {name: dayInfo[dayToSubmit][fieldToSubmit], startTime: fieldToSubmit}, dayId: planData.singlePlan.days[dayToSubmit]._id, planId:planId}
             });
 
           } catch (e) {

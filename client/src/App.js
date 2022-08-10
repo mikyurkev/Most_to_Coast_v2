@@ -14,6 +14,7 @@ import Main from './pages/Main';
 import Account from './pages/Account';
 import Planner from './pages/Planner';
 import View from './pages/YourPlanner';
+import SinglePlan from './pages/SinglePlan';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,14 +54,14 @@ function App() {
             path="/account"
             element={<Account />}
           />
-          <Route
-            path="/planner"
-            element={<Planner />}
-          />
-          <Route
-            path="/viewplanner"
-            element={<View />}
-          />
+          <Route path="/planner">
+            <Route path=':planId' element={<Planner />} />
+            <Route path='' element={<Planner />} />
+          </Route>
+          <Route path="/view-planner">
+            <Route path=':planId' element={<SinglePlan />} />
+            <Route path='' element={<View />} />
+          </Route>
         </Routes>
       </Router>
     </ApolloProvider>
