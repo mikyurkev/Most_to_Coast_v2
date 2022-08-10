@@ -5,37 +5,16 @@ main {
 }
 
 :root {
-  --primary-color: #3dc4f2;
-  --secondary-color: #F6F6F6;
-  --tertiary-color: #0078AA;
+  --primary: #90d8f4;
+  --secondary: #3dc4f2;
+  --tertiary: white;
 }
 
-.account-section {
+body {
   margin: 0;
   padding: 0;
   font-size: 28px;
-}
-
-.account-section h1 {
-  color: var(--tertiary-color);
-}
-
-.user-input {
-  color: var(--tertiary-color);
-}
-
-.editMe-btn {
-  padding: 2.5%;
-  background-color: #c2ebf9;
-  color: var(--tertiary-color);
-  margin-left: 60%;
-  min-width: 35%;
-  font-weight: 700;
-  font-size: 20px;
-  border-radius: 15px;
-}
-
-.editMe-btn:hover {
-  background-color: #3ca2c4;
-  color: var(--secondary-color);
+  background: white;
+  color: #3dc4f2;
+  font-family: "Edu NSW ACT Foundation", cursive;
 }
