@@ -40,7 +40,7 @@ export default function ViewYourPlanner() {
 
             return {
                 id: day._id,
-                dayNumber: `Day ${day.dayNumber}`,
+                dayNumber: `Day ${day.dayNumber + 1}`,
                 activities: activities
             };
         });
