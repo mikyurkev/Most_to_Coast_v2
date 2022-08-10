@@ -115,7 +115,7 @@ export default function PlanTemplate({ planId, editMode }) {
             }
             </div>
             <h1>Number of days: {day}</h1>
-            
+            <button type="button" onClick={()=>document.location.reload()}>I'm done!</button>
         </div>
     )
 };

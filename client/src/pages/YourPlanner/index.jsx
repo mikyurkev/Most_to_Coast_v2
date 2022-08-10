@@ -15,6 +15,7 @@ export default function ViewYourPlanner() {
 
     const { loading, data } = useQuery(QUERY_PLAN_BY_USER, {
         variables: { username: Auth.getProfile().data.username }
+        // variables: { username: 'Elisha68' }
     });
 
     if (!Auth.loggedIn()) {
@@ -39,7 +40,7 @@ export default function ViewYourPlanner() {
 
             return {
                 id: day._id,
-                dayNumber: `Day ${day.dayNumber}`,
+                dayNumber: `Day ${day.dayNumber + 1}`,
                 activities: activities
             };
         });
