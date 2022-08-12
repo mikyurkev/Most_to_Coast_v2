@@ -1,7 +1,7 @@
 # Most_to_Coast
 
 ## Heroku Deployment: 
-https://most-to-coast-v2.herokuapp.com/
+https://most-to-coast.herokuapp.com/
 
 ## Guest Login Information:
 Guest Login Email: guest@guest.com <br>
@@ -77,9 +77,26 @@ This app will reduce travel planning time. Creating a time schedule for the trip
 6. Create Days && Add Activities
 ![image](https://user-images.githubusercontent.com/95199209/184033756-c5cdc213-c09f-460c-b647-a885d4c12df1.png)
 
+## Future Improvement (September - October)
+1. Frontend/UI:
+- Accessibility: Better Dark/Light background contrast.
+- Use Material UI, RegEx Library for better framework.
+- UI: Designs proposed by Mikel. 
+![image](https://user-images.githubusercontent.com/95199209/184432976-0bd89b6b-f1fc-4397-9816-5753656d73b9.png)
+
+2. Backend Functionalities
+- Activities: Add Photos, Add HashTags for different activities (Food, Outdoor, Fitness, etc..) 
+- Date of the Days: Use actual dates for days instead of day 1, day 2.
+- Flexbility on the time slots. (instead of 9am 12am..)
+- Account Page: To change username, profile photo, password.
+- Location/Geographical API: Google Map API for the destinations.
+- Main Page Refresh Nav Bar no-show Bug. (Without Refresh)
+- Submit Form as a single mutation.
+- Notification for deleting a existing plan.
 
 ---
 
 ### ©️2022  Yuri Ichikawa, Kevin (Haoyu) Fang, Mikel Balazic
+
 
 
